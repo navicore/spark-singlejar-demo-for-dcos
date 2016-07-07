@@ -5,4 +5,8 @@ package onextent.spark.demo.countwords
   */
 class CountFromUrl {
 
+  val html = scala.io.Source.fromURL("https://spark.apache.org/").mkString
+  val list = html.split("\n").filter(_ != "")
+  val rdds = sc.parallelize(list)
+  val count = rdds.filter(_.contains("Spark")).count()
 }
