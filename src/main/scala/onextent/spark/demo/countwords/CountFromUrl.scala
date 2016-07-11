@@ -9,10 +9,10 @@ object CountFromUrl {
 
   def main(args: Array[String]) {
     System.setProperty("spark.mesos.coarse", "true")
-    val MESOS_MASTER = System.getProperty("MESOS_MASTER","dcos-master-42450089-0")
+    //val MESOS_MASTER = System.getProperty("MESOS_MASTER","mesos://dcos-master-42450089-0:5050")
     val conf = new SparkConf()
-      //.setMaster(s"mesos://$MESOS_MASTER:5050")
-      .setMaster(s"mesos://$MESOS_MASTER:7077")
+      //.setMaster(MESOS_MASTER)
+      //.setMaster(s"mesos://$MESOS_MASTER:7077")
       //.setMaster("local")
       .setAppName("Count From Url")
     //  .set("spark.executor.uri", "<path to spark-1.6.2.tar.gz uploaded above>")
