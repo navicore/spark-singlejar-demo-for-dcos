@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
 
-dcos spark run --submit-args="--class onextent.spark.demo.countwords.CountFromUrl https://navicorejars.blob.core.windows.net/spark-singlejar-demo/spark-singlejar-demo"
+MAINCLASS="onextent.spark.demo.countwords.CountFromUrl"
+
+USER=`id -u -n`
+STORAGE_ACCOUNT="${USER}jars"
+CONTAINER=${PWD##*/}
+
+TEMP=$(dcos spark run --submit-args="--class $MAINCLASS https://${STORAGE_ACCOUNT}.blob.core.windows.net/$CONTAINER/$CONTAINER")
+
+SID=$(echo $TEMP | cut -d':' -f 2 | sed -e 's/[[:space:]]*$//')  # get all after ':' and trim
+
+echo "my sid: $SID"
+dcos spark log --follow $SID
 
