@@ -10,6 +10,6 @@ TEMP=$(dcos spark run --submit-args="--class $MAINCLASS https://${STORAGE_ACCOUN
 
 SID=$(echo $TEMP | cut -d':' -f 2 | sed -e 's/[[:space:]]*$//')  # get all after ':' and trim
 
-echo "my sid: $SID"
-dcos spark log --follow $SID
+echo "dcos task id: $SID"
+dcos spark log --follow $SID || { echo "see log via command: dcos task log $SID --completed"; exit 1; };
 
