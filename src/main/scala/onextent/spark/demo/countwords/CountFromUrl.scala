@@ -21,7 +21,7 @@ object CountFromUrl {
     val list = html.split("\n").filter(_ != "")
     val rdds = sc.parallelize(list)
     val count = rdds.filter(_.contains("Spark")).count()
-    println(s"see this: $count")
+    println(s"see this............? ejs: $count")
   }
 }
 

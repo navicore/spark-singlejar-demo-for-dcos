@@ -18,7 +18,7 @@ TEMP=`azure storage account connectionstring show --json -g $RESOURCE_GROPUP $ST
 TEMP=$(echo $TEMP | jsonValue string 1)
 export AZURE_STORAGE_CONNECTION_STRING="$(sed -e 's/[[:space:]]*$//' <<<${TEMP})"
 
-azure storage blob upload "./$JARFILE" $CONTAINER $CONTAINER
+azure storage blob upload -q "./$JARFILE" $CONTAINER $CONTAINER
 
 #azure storage container sas create --json --permissions r --expiry "08/01/2016"
 
