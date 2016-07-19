@@ -11,3 +11,8 @@ resolvers += Resolver.mavenLocal
 mainClass in assembly := Some("onextent.spark.demo.countwords.CountFromUrl")
 assemblyJarName in assembly := "countwords.jar"
 
+lazy val uploadTask = TaskKey[Unit]("upload", "upload the super jar")
+uploadTask:= { "./upload.sh" !  }
+lazy val submitTask = TaskKey[Unit]("submit", "submit the jar to spark on dcos")
+submitTask:= { "./submit.sh" !  }
+
