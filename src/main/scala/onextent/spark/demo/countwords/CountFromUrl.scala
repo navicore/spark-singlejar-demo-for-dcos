@@ -20,8 +20,9 @@ object CountFromUrl {
     val html = scala.io.Source.fromURL("https://spark.apache.org/").mkString
     val list = html.split("\n").filter(_ != "")
     val rdds = sc.parallelize(list)
-    val count = rdds.filter(_.contains("Spark")).count()
-    println(s"see this............? ejs: $count")
+    val scount = rdds.filter(_.contains("Spark")).count()
+    val fcount = rdds.filter(_.contains("fast")).count()
+    println(s"see this............? ejs spark: $scount fast: $fcount")
   }
 }
 

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export HTTPS_PROXY=http://localhost:8888 azure
+
 USER=`id -u -n`
 RESOURCE_GROPUP="${USER}.dev"
 REGION="westus"

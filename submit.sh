@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export HTTPS_PROXY=http://localhost:8888 azure
+
 MAINCLASS="onextent.spark.demo.countwords.CountFromUrl"
 
 USER=`id -u -n`
