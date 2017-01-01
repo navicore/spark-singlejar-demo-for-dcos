@@ -1,4 +1,4 @@
-# spark-singlejar-demo
+# spark singlejar demo for dcos
 a template for creating a single jar spark job to be submitted to Spark on DC/OS
 
 1. login with azure cli
